@@ -1,0 +1,16 @@
+Package: geneName
+Type: Package
+Title: A package for conversion of multiple gene identifier
+Version: 0.1.0
+Author: Mustafa Samet Pir
+Maintainer: Mustafa Samet Pir <mustafapir29@gmail.com>
+Description: This package provides functions to convert gene synonyms to gene names and homologous gene
+    names of mouse and human.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10)
+Imports:
+    fastmatch
+RoxygenNote: 7.1.1
