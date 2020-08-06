@@ -16,7 +16,7 @@ mousegnameConverter<-function(genelist,colname){
   bg5<-mouse_homology[mouse_homology$Gene_synonyms %fin% n_occur$Var1[n_occur$Freq > 1],]
 
   bg5<-bg5[which(bg5$Gene_synonyms %fin% genelist[[colname]][which(!(genelist[[colname]] %fin% mouse_homology$Gene_name))]),]
-  colnames(bg5)[2]<-"Gene_name_A"
+  colnames(bg5)[2]<-colname
 
   genelist<-merge(genelist, bg5, by = colname, all = TRUE, allow.cartesian = TRUE)
   for (i in 1:length(genelist[[colname]])){
