@@ -1,0 +1,47 @@
+---
+title: "`geneName` Package"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(geneName)
+library(data.table)
+library(kableExtra)
+```
+
+## GitHub Documents
+
+This package provides functions to convert human and mouse gene synonyms to gene names; and mouse gene names to human homologous genes.
+
+
+## Examples
+
+Here is an example data frame including gene names in one column:
+
+```{r, echo=FALSE}
+example<-fread("example.csv")
+```
+
+```{r, echo=FALSE}
+knitr::kable(example, "simple")
+```
+
+
+
+`gnameconverter` function converts gene synonyms (if any) in the selected column to gene names. This makes it easier to transform gene synonyms to gene names even when the column contains a mixture of gene synonyms and gene names. This function can also be used to be sure all elements are gene names and there is no gene synonym in the table.
+Output is the same data table with all other columns preserved.
+
+
+## Usage
+
+```{r, results='hide', message=FALSE}
+df<-gnameConverter(example, "Gene name")
+```
+
+```{r, highlight=FALSE, echo=FALSE}
+knitr::kable(df, "simple")
+```
+
+
+
