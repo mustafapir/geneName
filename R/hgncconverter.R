@@ -1,7 +1,7 @@
 #' Convert human gene synonyms to HGNC approved gene names
 #'
 #' This function converts a column containing human gene synonyms within a data frame
-#' to NCBI gene names. If the column contains a mix of gene names and gene synonyms,
+#' to HGNC appreved gene names. If the column contains a mix of gene names and gene synonyms,
 #' only gene synonyms will be converted to gene names and gene names will remain the same.
 #'
 #' @param genelist A dataframe object
@@ -9,7 +9,7 @@
 #' @return dataframe object
 #' @export
 
-gnameConverter<-function(genelist,colname){
+hgncConverter<-function(genelist,colname){
 
   names(hgnc)[1]<-"Gene_name_temp"
   n_occur <- data.frame(table(hgnc$Gene_synonyms))
