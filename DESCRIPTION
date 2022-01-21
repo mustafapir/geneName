@@ -1,7 +1,7 @@
 Package: geneName
 Type: Package
 Title: A package for conversion of multiple gene identifier
-Version: 0.2.1
+Version: 0.2.2
 Author: Mustafa Samet Pir
 Maintainer: Mustafa Samet Pir <mustafapir29@gmail.com>
 Description: This package provides functions to convert gene synonyms to gene names and homologous gene
@@ -13,4 +13,4 @@ Depends:
     R (>= 2.10)
 Imports:
     fastmatch
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
