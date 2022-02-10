@@ -56,8 +56,8 @@ hgncConverter2<-function(genelist,colname){
   }
   else if (!("Gene_name" %in% colnames(genelist))){
     temp_notApproved<-left_join(notApproved, hgnc, by = setNames(tempcolname, colname))
-    temp_notApproved[[colname]]<-temp_notApproved$Genename
-    temp_notApproved<-temp_notApproved %>% select(!Genename)
+    temp_notApproved[[colname]]<-temp_notApproved$Gene_name
+    temp_notApproved<-temp_notApproved %>% select(!Gene_name)
   }
   else {
     stop("Change the name of that damn column!")
