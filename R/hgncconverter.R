@@ -43,7 +43,7 @@ hgncConverter2<-function(genelist,colname){
   tempcolname<-"Gene_synonyms"
   approved<-semi_join(genelist, hgnc, by = setNames(colname2, colname))
   someWOapproved<-anti_join(genelist, approved, by = colname)
-  notApproved<-semi_join(someWOapproved, hgnc, by = setNames(colname2, colname))
+  notApproved<-semi_join(someWOapproved, hgnc, by = setNames(tempcolname, colname))
   some<-rbind(approved, notApproved)
   non<-anti_join(genelist, some, by = colname)
 
