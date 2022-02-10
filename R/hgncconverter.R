@@ -39,6 +39,7 @@ hgncConverter<-function(genelist,colname){
 #' @export
 hgncConverter2<-function(genelist,colname){
   colname2<-"Gene_name"
+  colname3<-"Genename"
   tempcolname<-"Gene_synonyms"
   approved<-semi_join(genelist, hgnc, by = setNames(colname2, colname))
   someWOapproved<-anti_join(genelist, approved, by = colname)
@@ -51,12 +52,12 @@ hgncConverter2<-function(genelist,colname){
     colnames(hgnc_temp)[1]<-"Genename"
     temp_notApproved<-left_join(notApproved, hgnc_temp, by = setNames(tempcolname, colname))
     temp_notApproved[[colname]]<-temp_notApproved$Genename
-    temp_notApproved<-temp_notApproved %>% select(!Gene_name)
+    temp_notApproved<-temp_notApproved %>% select(!Genename)
   }
   else if (!("Gene_name" %in% colnames(genelist))){
     temp_notApproved<-left_join(notApproved, hgnc, by = setNames(tempcolname, colname))
     temp_notApproved[[colname]]<-temp_notApproved$Genename
-    temp_notApproved<-temp_notApproved %>% select(!Gene_name)
+    temp_notApproved<-temp_notApproved %>% select(!Genename)
   }
   else {
     stop("Change the name of that damn column!")
