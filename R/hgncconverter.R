@@ -36,7 +36,7 @@ hgncConverter<-function(genelist,colname){
   return(genelist[,1:(length(genelist)-1), drop = FALSE])
 }
 
-
+#' @export
 hgncConverter2<-function(genelist,colname){
   colname2<-"Gene_name"
   tempcolname<-"Gene_synonyms"

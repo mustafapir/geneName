@@ -3,6 +3,7 @@
 export(celegansConverter)
 export(gnameConverter)
 export(hgncConverter)
+export(hgncConverter2)
 export(mousegnameConverter)
 export(mousesynonymConverter)
 import(fastmatch)
