@@ -35,3 +35,35 @@ hgncConverter<-function(genelist,colname){
   }
   return(genelist[,1:(length(genelist)-1), drop = FALSE])
 }
+
+
+hgncConverter2<-function(genelist,colname){
+  colname2<-"Gene_name"
+  tempcolname<-"Gene_synonyms"
+  approved<-semi_join(genelist, hgnc, by = setNames(colname2, colname))
+  someWOapproved<-anti_join(genelist, approved, by = colname)
+  notApproved<-semi_join(someWOapproved, hgnc, by = setNames(colname2, colname))
+  some<-rbind(approved, notApproved)
+  non<-anti_join(genelist, some, by = colname)
+
+  if ("Gene_name" %in% colnames(genelist) & !("Genename" %in% colnames(genelist))){
+    hgnc_temp<-hgnc
+    colnames(hgnc_temp)[1]<-"Genename"
+    temp_notApproved<-left_join(notApproved, hgnc_temp, by = setNames(tempcolname, colname))
+    temp_notApproved[[colname]]<-temp_notApproved$Genename
+    temp_notApproved<-temp_notApproved %>% select(!Gene_name)
+  }
+  else if (!("Gene_name" %in% colnames(genelist))){
+    temp_notApproved<-left_join(notApproved, hgnc, by = setNames(tempcolname, colname))
+    temp_notApproved[[colname]]<-temp_notApproved$Genename
+    temp_notApproved<-temp_notApproved %>% select(!Gene_name)
+  }
+  else {
+    stop("Change the name of that damn column!")
+  }
+
+  all<-rbind(approved, temp_notApproved, non)
+  return(all)
+
+}
+
