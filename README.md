@@ -1,6 +1,7 @@
 `geneName` Package
 ================
 
+## GitHub Documents
 
 This package provides functions to convert human and mouse gene synonyms
 to gene names; and mouse gene names to human homologous genes.
